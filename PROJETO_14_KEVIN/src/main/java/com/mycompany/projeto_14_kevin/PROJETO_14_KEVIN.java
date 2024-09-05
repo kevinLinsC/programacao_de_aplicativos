@@ -79,6 +79,15 @@ public class PROJETO_14_KEVIN {
             }
         }
         
+        for (int i = 1; i <= num; i++) {
+            if (num % i == 0) {
+                divisiveis++;
+                if (divisiveis > 2) {
+                    break;
+                }
+            }
+        }
+        
         System.out.println("A soma da diagonal principal e: " + soma_diag_prin);
     }
 }

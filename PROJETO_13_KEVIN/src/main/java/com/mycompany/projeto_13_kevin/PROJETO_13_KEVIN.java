@@ -17,20 +17,31 @@ public class PROJETO_13_KEVIN {
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         
-        int indice;
-        int i;
-        int cont_resultados = 0;
-        String operacao;
+        int indice = 0; // Indice do vetor números.
+        int i; // Variavel de indece, só para auxilios em for.
+        int cont_resultados = 1;
+        String operacao; // Operação em que o calculo irá ser feito.
         int resultado = 0;
-        int num1;
-        int num2;
+        int num1 = 0;
+        int num2 = 0;
+        String temp;
         
-        cont_resultados++;
-        int[] resultados = new int[cont_resultados];
+        int[] A = new int[1];
         
-        //Tamanho do vetor
-        System.out.print("Digite o tamanho do vetor: ");
-        indice = ler.nextInt();
+        //Tamanho do vetor.
+        while (indice <= 0) {
+            System.out.print("Digite o tamanho do vetor: ");
+            temp = ler.next();
+            try {
+                indice = Integer.parseInt(temp);
+            } catch (NumberFormatException e) {
+                System.out.println("Digite somente numeros.");
+            }
+        }
+        
+        
+        
+        System.out.println("-----------------------------------");
         
         //Cria o vetor com o tamanho que o usuario indicou
         int[] numeros = new int[indice];
@@ -62,27 +73,60 @@ public class PROJETO_13_KEVIN {
             System.out.println("posicao " + (i + 1) + ": " + numeros[i]);
         }
         
-        //Primeiro numero
-        System.out.print("Escolha o primeiro indice: ");
-        num1 = ler.nextInt();
-        num1 = numeros[num1 - 1];
+        while (true) {
+            //Primeiro numero
+            num1 = 0;
+            num2 = 0;
+            while (num1 < 1 && num1 > numeros.length) {
+                System.out.print("Escolha o primeiro indice: ");
+                temp = ler.next();
+                try {
+                    num1 = Integer.parseInt(temp);
+                    num1 = numeros[num1 - 1];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Escolha um indice valido.");
+                } catch (NumberFormatException e) {
+                    System.out.println("Digite somente numeros.");
+                }
+            }
+            
         
-        //Segundo numero
-        System.out.print("Escolha o segundo indice: ");
-        num2 = ler.nextInt();
-        num2 = numeros[num2 - 1];
+            //Segundo numero
+            while (num2 <= 0) {
+                System.out.print("Escolha o segundo indice: ");
+                temp = ler.next();
+                try {
+                    num2 = Integer.parseInt(temp);
+                    num2 = numeros[num2 - 1];
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Escolha um indice valido.");
+                } catch (NumberFormatException e) {
+                    System.out.println("Digite somente numeros.");
+                }
+            }
         
-        switch (operacao) {
-            case "+" -> resultado = num1 + num2;
-            case "-" -> resultado = num1 - num2;
-            case "/" -> resultado = num1 / num2;
-            case "*" -> resultado = num1 * num2;
+            switch (operacao) {
+                case "+" -> resultado = num1 + num2;
+                case "-" -> resultado = num1 - num2;
+                case "/" -> resultado = num1 / num2;
+                case "*" -> resultado = num1 * num2;
+            }
+            
+        
+            A[cont_resultados - 1] = resultado;
+            cont_resultados++;
+            
+            int[] B = new int[cont_resultados];
+            B[cont_resultados - 1] = resultado;
+            A = B;
+        
+            System.out.println("A soma entre " + num1 + " e " + num2 + " = " + resultado);
+        
+            System.out.println(Arrays.toString(numeros));
+            System.out.println(Arrays.toString(A));
+            System.out.println(Arrays.toString(B));
         }
         
-        resultados[cont_resultados] = resultado;
         
-        System.out.println("A soma entre " + num1 + " e " + num2 + " = " + resultado);
-        
-        System.out.print(Arrays.toString(numeros));
     }
 }
