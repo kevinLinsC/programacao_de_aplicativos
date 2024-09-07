@@ -14,15 +14,13 @@ import java.io.IOException;
 public class PROJETO_14_KEVIN {
 
     public static void main(String[] args) throws IOException {
-        String s = "";
+        String s;
         DataInputStream dado;
         int[][] num = new int[5][5];
         int l; // Linha
         int c; // Coluna
         
         // Recebe os valores.
-        
-        
         for (l = 0; l < 5; l++) {
             for (c = 0; c < 5; c++) {
                 System.out.print("Digite o [" + (l + 1) + "][" + (c + 1) + "] numero: ");
@@ -34,13 +32,16 @@ public class PROJETO_14_KEVIN {
                     System.out.println("ERRO! Digite somente numeros.");
                     c--;
                 }
-                
-                
-                
             }
         }
         
-        for (l = 0; l < 5; l++) {
+        System.out.println("");
+        Linha();
+        System.out.println("Matriz original: ");
+        Linha();
+        
+        // Mostra a matriz original.
+         for (l = 0; l < 5; l++) {
             for (c = 0; c < 5; c++) {
                 System.out.print(num[l][c] + " ");
                 if (num[l][c] < 10) {
@@ -50,14 +51,7 @@ public class PROJETO_14_KEVIN {
             }
             System.out.println("");
         }
-        
-        System.out.println("");
-        Linha();
-        System.out.println("Matriz original: ");
-        Linha();
-        
-        // Mostra a matriz original.
-        
+         
         // Ordena a matriz de forma crescente.
         num = OrdenaCres(num);
         

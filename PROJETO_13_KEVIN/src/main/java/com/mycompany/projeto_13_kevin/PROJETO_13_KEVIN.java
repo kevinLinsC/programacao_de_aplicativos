@@ -51,32 +51,31 @@ public class PROJETO_13_KEVIN {
                 System.out.println("ERRO! Digite somente numeros.");
                 i--;
             }
-            
         }
         
         System.out.println("-----------------------------------");
-        
-        //Usuario escolhe a operacao que será feito
-        while (true) {
-            System.out.print("Escolha a operacao (+ | - | * | /): ");
-            operacao = ler.next();
-            if (operacao.equals("/") || operacao.equals("*") || operacao.equals("+") || operacao.equals("-")) {
-                break;
-            }
-        }
-        
-        System.out.println("-----------------------------------");
-        
-        //Escreve a posicao de cada numero
-        for (i = 0; i < numeros.length; i++) {
-            System.out.println((i + 1) + " Posicao: " + numeros[i]);
-        }
-        
-        System.out.println("-----------------------------------");
-        
+
         while (true) {
             esc1 = -1;
             esc2 = -1;
+            
+            //Usuario escolhe a operacao que será feito
+            while (true) {
+                System.out.print("Escolha a operacao (+ | - | * | /): ");
+                operacao = ler.next();
+                if (operacao.equals("/") || operacao.equals("*") || operacao.equals("+") || operacao.equals("-")) {
+                    break;
+                }
+            }
+
+            System.out.println("-----------------------------------");
+
+            //Escreve a posicao de cada numero
+            for (i = 0; i < numeros.length; i++) {
+                System.out.println((i + 1) + " Posicao: " + numeros[i]);
+            }
+
+            System.out.println("-----------------------------------");
             //Primeiro numero
             while (esc1 < 0 || esc1 >= numeros.length) {
                 System.out.print("Escolha o primeiro indice: ");
@@ -108,14 +107,26 @@ public class PROJETO_13_KEVIN {
                     System.out.println("Digite somente numeros.");
                 }
             }
-        
-            switch (operacao) {
-                case "+" -> resultado = numeros[esc1] + numeros[esc2];
-                case "-" -> resultado = numeros[esc1] - numeros[esc2];
-                case "/" -> resultado = numeros[esc1] / numeros[esc2];
-                case "*" -> resultado = numeros[esc1] * numeros[esc2];
-            }
             
+            switch (operacao) {
+                case "+":
+                    resultado = numeros[esc1] + numeros[esc2];
+                case "-":
+                    resultado = numeros[esc1] + numeros[esc2];
+                case "/":
+                    try {
+                        resultado = numeros[esc1] / numeros[esc2];
+                    } catch (ArithmeticException e) {
+                        System.out.println("Erro! Impossivel dividir por zero.");
+                        resultado = 0;
+                    }
+                case "*":
+                    resultado = numeros[esc1] * numeros[esc2];
+            }
+               
+            if (cont >= numeros.length) {
+                break;
+            }
             resultados[cont] = resultado;
             cont++;
             
@@ -124,10 +135,7 @@ public class PROJETO_13_KEVIN {
             System.out.println("A resultado entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
         }
         
-        
-    }
-    
-    public static void AdicionaVetor(int valor) {
+        System.out.println(resultados);
         
     }
 }
