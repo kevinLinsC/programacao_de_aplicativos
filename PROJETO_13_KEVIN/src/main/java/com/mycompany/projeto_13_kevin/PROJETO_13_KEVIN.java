@@ -12,9 +12,6 @@ import java.util.Scanner;
  * @author kevin
  */
 public class PROJETO_13_KEVIN {
-    
-    public static int[] B;
-    
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         
@@ -24,11 +21,8 @@ public class PROJETO_13_KEVIN {
         int resultado = 0;
         int esc1;
         int esc2;
+        int cont = 0;
         String temp;
-        int cont_resultados = 1;
-        
-        int[] A = new int[1];
-        //int[] B = new int[cont_resultados];
         
         //Tamanho do vetor.
         while (indice <= 0) {
@@ -45,6 +39,7 @@ public class PROJETO_13_KEVIN {
         
         //Cria o vetor com o tamanho que o usuario indicou
         int[] numeros = new int[indice];
+        int[] resultados = new int[indice];
         
         //Pega os numeros e coloca dentro do vetor
         for (i = 0; i < numeros.length; i++) {
@@ -53,7 +48,7 @@ public class PROJETO_13_KEVIN {
             try {
                 numeros[i] = Integer.parseInt(num);
             } catch (NumberFormatException e) {
-                System.out.println("ERRO");
+                System.out.println("ERRO! Digite somente numeros.");
                 i--;
             }
             
@@ -121,22 +116,12 @@ public class PROJETO_13_KEVIN {
                 case "*" -> resultado = numeros[esc1] * numeros[esc2];
             }
             
-        
-            A[cont_resultados - 1] = resultado;
-            cont_resultados++;
-            
-            
-            B[cont_resultados - 1] = resultado;
-            
-            
-            A = B;
+            resultados[cont] = resultado;
+            cont++;
             
             System.out.println("-----------------------------------");
         
-            System.out.println("A soma entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
-        
-            System.out.println(Arrays.toString(A));
-            System.out.println(Arrays.toString(B));
+            System.out.println("A resultado entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
         }
         
         

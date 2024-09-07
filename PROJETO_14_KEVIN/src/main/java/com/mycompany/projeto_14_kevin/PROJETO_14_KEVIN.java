@@ -5,8 +5,7 @@
 package com.mycompany.projeto_14_kevin;
 
 import java.io.DataInputStream;
-import java.util.Arrays;
-import java.util.Random;
+import java.io.IOException;
 
 /**
  *
@@ -14,21 +13,35 @@ import java.util.Random;
  */
 public class PROJETO_14_KEVIN {
 
-    public static void main(String[] args) {
-        Random aleatorio = new Random();
-        String s;
+    public static void main(String[] args) throws IOException {
+        String s = "";
         DataInputStream dado;
         int[][] num = new int[5][5];
         int l; // Linha
         int c; // Coluna
         
-        // Recebe os valores e mostra a matriz original.
-        Linha();
-        System.out.println("Matriz original: ");
-        Linha();
+        // Recebe os valores.
+        
+        
         for (l = 0; l < 5; l++) {
             for (c = 0; c < 5; c++) {
-                num[l][c] = aleatorio.nextInt(0, 50);
+                System.out.print("Digite o [" + (l + 1) + "][" + (c + 1) + "] numero: ");
+                dado = new DataInputStream(System.in);
+                s = dado.readLine();
+                try {
+                    num[l][c] = Integer.parseInt(s);
+                } catch (NumberFormatException e) {
+                    System.out.println("ERRO! Digite somente numeros.");
+                    c--;
+                }
+                
+                
+                
+            }
+        }
+        
+        for (l = 0; l < 5; l++) {
+            for (c = 0; c < 5; c++) {
                 System.out.print(num[l][c] + " ");
                 if (num[l][c] < 10) {
                     System.out.print(" ");
@@ -37,6 +50,13 @@ public class PROJETO_14_KEVIN {
             }
             System.out.println("");
         }
+        
+        System.out.println("");
+        Linha();
+        System.out.println("Matriz original: ");
+        Linha();
+        
+        // Mostra a matriz original.
         
         // Ordena a matriz de forma crescente.
         num = OrdenaCres(num);
