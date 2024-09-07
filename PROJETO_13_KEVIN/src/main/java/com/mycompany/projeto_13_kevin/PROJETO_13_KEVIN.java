@@ -83,7 +83,7 @@ public class PROJETO_13_KEVIN {
                 try {
                     esc1 = Integer.parseInt(temp);
                     esc1--;
-                    System.out.println("Indice " + esc1 + "; Numero: " + numeros[esc1]);
+                    System.out.println("Indice " + (esc1 + 1) + "; Numero: " + numeros[esc1]);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Escolha um indice valido.");
                 } catch (NumberFormatException e) {
@@ -100,7 +100,7 @@ public class PROJETO_13_KEVIN {
                 try {
                     esc2 = Integer.parseInt(temp);
                     esc2--;
-                    System.out.println("Indice " + esc2 + "; Numero: " + numeros[esc2]);
+                    System.out.println("Indice " + (esc2 + 1) + "; Numero: " + numeros[esc2]);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Escolha um indice valido.");
                 } catch (NumberFormatException e) {
@@ -108,34 +108,42 @@ public class PROJETO_13_KEVIN {
                 }
             }
             
+            // Faz o calculo.
             switch (operacao) {
-                case "+":
+                case "+" -> {
                     resultado = numeros[esc1] + numeros[esc2];
-                case "-":
-                    resultado = numeros[esc1] + numeros[esc2];
-                case "/":
+                    System.out.println("A soma entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
+                }
+                case "-" -> {
+                    resultado = numeros[esc1] - numeros[esc2];
+                    System.out.println("A subtracao entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
+                }
+                case "/" -> {
                     try {
                         resultado = numeros[esc1] / numeros[esc2];
+                        System.out.println("A divisao entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
                     } catch (ArithmeticException e) {
                         System.out.println("Erro! Impossivel dividir por zero.");
                         resultado = 0;
                     }
-                case "*":
+                }
+                default -> {
                     resultado = numeros[esc1] * numeros[esc2];
+                    System.out.println("A multiplicao entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
+                }
             }
-               
-            if (cont >= numeros.length) {
-                break;
-            }
+            
             resultados[cont] = resultado;
             cont++;
             
+            if (cont >= numeros.length) {
+                break;
+            }
+
             System.out.println("-----------------------------------");
-        
-            System.out.println("A resultado entre " + numeros[esc1] + " e " + numeros[esc2] + " = " + resultado);
         }
         
-        System.out.println(resultados);
+        System.out.println(Arrays.toString(resultados));
         
     }
 }
