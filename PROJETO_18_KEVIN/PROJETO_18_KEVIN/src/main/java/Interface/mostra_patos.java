@@ -293,6 +293,8 @@ public class mostra_patos extends javax.swing.JFrame {
             jfield_nome.setText("");
             jfield_peso.setText("");
             jfield_velocidade.setText("");
+            
+            PopularJTable("SELECT * FROM pato");
         }
         catch (SQLException e) {
             System.out.println("Deu esse erro aqui ô " + e.getMessage());
@@ -347,6 +349,8 @@ public class mostra_patos extends javax.swing.JFrame {
             jfield_nome_DA.setText("");
             jfield_peso_DA.setText("");
             jfield_velocidade_DA.setText("");
+            
+            PopularJTable("SELECT * FROM pato");
         }
         catch (SQLException e) {
             System.out.println("Deu esse erro aqui ô " + e.getMessage());
@@ -356,7 +360,7 @@ public class mostra_patos extends javax.swing.JFrame {
 
     private void AtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtualizarMouseClicked
         // TODO add your handling code here:
-                Connection conexao = null;
+        Connection conexao = null;
         PreparedStatement statement = null;
         
         String url = "jdbc:mysql://localhost:3306/pato_corrida";
@@ -381,6 +385,8 @@ public class mostra_patos extends javax.swing.JFrame {
             jfield_nome_DA.setText("");
             jfield_peso_DA.setText("");
             jfield_velocidade_DA.setText("");
+            
+            PopularJTable("SELECT * FROM pato");
         }
         catch (SQLException e) {
             System.out.println("Deu esse erro aqui ô " + e.getMessage());
